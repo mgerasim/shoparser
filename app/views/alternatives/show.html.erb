@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tovar:</strong>
+  <%= @alternative.tovar.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @alternative.url %>
+</p>
+
+<p>
+  <strong>Xpath:</strong>
+  <%= @alternative.xpath %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @alternative.value %>
+</p>
+
+<%= link_to 'Edit', edit_alternative_path(@alternative) %> |
+<%= link_to 'Back', alternatives_path %>

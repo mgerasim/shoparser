@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tovar: one
+  xpath: MyString
+  value: 1.5
+
+two:
+  tovar: two
+  xpath: MyString
+  value: 1.5

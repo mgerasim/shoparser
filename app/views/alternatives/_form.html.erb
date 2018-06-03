@@ -1,0 +1,39 @@
+<%= form_with(model: alternative, local: true) do |form| %>
+  <% if alternative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alternative.errors.count, "error") %> prohibited this alternative from being saved:</h2>
+
+      <ul>
+      <% alternative.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tovar_id %>
+
+    <%= form.select :tovar_id, options_for_select(Tovar.all.collect { |p| [p.name, p.id] }, form.object.tovar_id), {}, {:class => 'form-control',  id: :alternative_tovar} %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :xpath %>
+    <%= form.text_field :xpath %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
