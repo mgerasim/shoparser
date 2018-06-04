@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tovars</h1>
+<h1>Товары</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Наименование</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +14,9 @@
     <% @tovars.each do |tovar| %>
       <tr>
         <td><%= tovar.name %></td>
-        <td><%= link_to 'Show', tovar %></td>
-        <td><%= link_to 'Edit', edit_tovar_path(tovar) %></td>
-        <td><%= link_to 'Destroy', tovar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Просмотреть', tovar %></td>
+        <td><%= link_to 'Редактировать', edit_tovar_path(tovar) %></td>
+        <td><%= link_to 'Удалить', tovar, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Tovar', new_tovar_path %>
+<%= link_to 'Добавить', new_tovar_path, :class => "btn btn-primary" %>
