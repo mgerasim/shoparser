@@ -67,3 +67,5 @@ group :production do
 end
 
 gem 'addressable'
+gem 'nokogiri'
+gem 'net'

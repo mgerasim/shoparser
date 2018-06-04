@@ -2,11 +2,9 @@ require 'nokogiri'
 require "net/http"
 require "uri"
 require "addressable/uri"
-# encoding: UTF-8
 
-namespace :tovar do
-  desc "TODO"
-  task parse: :environment do
+class ParseController < ApplicationController
+  def run
   	Tovar.all.each { |tovar|  
   		puts "parse #{tovar.name}"
   		tovar.alternatives.each { |e|  
@@ -81,6 +79,7 @@ namespace :tovar do
 
   		}
   	}
-  end
 
+  	redirect_to alternatives_url, notice: 'Обновление стоимости прошло успешно'
+  end
 end
