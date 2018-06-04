@@ -28,7 +28,7 @@ class AlternativesController < ApplicationController
 
     respond_to do |format|
       if @alternative.save
-        format.html { redirect_to @alternative, notice: 'Alternative was successfully created.' }
+        format.html { redirect_to @alternative, notice: 'Аналог успешно создан.' }
         format.json { render :show, status: :created, location: @alternative }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AlternativesController < ApplicationController
   def update
     respond_to do |format|
       if @alternative.update(alternative_params)
-        format.html { redirect_to @alternative, notice: 'Alternative was successfully updated.' }
+        format.html { redirect_to @alternative, notice: 'Аналог успешно обновлен.' }
         format.json { render :show, status: :ok, location: @alternative }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class AlternativesController < ApplicationController
   def destroy
     @alternative.destroy
     respond_to do |format|
-      format.html { redirect_to alternatives_url, notice: 'Alternative was successfully destroyed.' }
+      format.html { redirect_to alternatives_url, notice: 'Аналог успешно удален.' }
       format.json { head :no_content }
     end
   end

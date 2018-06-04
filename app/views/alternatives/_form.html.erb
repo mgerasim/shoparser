@@ -1,4 +1,4 @@
-<%= form_with(model: alternative, local: true) do |form| %>
+<%= form_with(model: alternative, local: true, :html => {class: 'form-horizontal'}) do |form| %>
   <% if alternative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(alternative.errors.count, "error") %> prohibited this alternative from being saved:</h2>
@@ -11,29 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :tovar_id %>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <%= form.label "Товар:", :class => "col-sm-3 control-label"  %>
+    </div>
 
     <%= form.select :tovar_id, options_for_select(Tovar.all.collect { |p| [p.name, p.id] }, form.object.tovar_id), {}, {:class => 'form-control',  id: :alternative_tovar} %>
 
   </div>
 
-  <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <%= form.label "Url:", :class => "col-sm-3 control-label" %>
+    </div>
+    <%= form.text_field :url, :class => "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :xpath %>
-    <%= form.text_field :xpath %>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <%= form.label "Xpath:", :class => "col-sm-3 control-label"  %>
+    </div>
+    <%= form.text_field :xpath, :class => "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= form.submit "Сохранить", :class => "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

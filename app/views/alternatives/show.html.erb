@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Tovar:</strong>
+  <strong>Товар:</strong>
   <%= @alternative.tovar.name %>
 </p>
 
@@ -15,10 +15,6 @@
   <%= @alternative.xpath %>
 </p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @alternative.value %>
-</p>
 
-<%= link_to 'Edit', edit_alternative_path(@alternative) %> |
-<%= link_to 'Back', alternatives_path %>
+<%= link_to 'Редактировать', edit_alternative_path(@alternative) %> |
+<%= link_to 'Назад', alternatives_path %>

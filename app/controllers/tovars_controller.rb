@@ -28,7 +28,7 @@ class TovarsController < ApplicationController
 
     respond_to do |format|
       if @tovar.save
-        format.html { redirect_to @tovar, notice: 'Tovar was successfully created.' }
+        format.html { redirect_to @tovar, notice: 'Товар успешно создан.' }
         format.json { render :show, status: :created, location: @tovar }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TovarsController < ApplicationController
   def update
     respond_to do |format|
       if @tovar.update(tovar_params)
-        format.html { redirect_to @tovar, notice: 'Tovar was successfully updated.' }
+        format.html { redirect_to @tovar, notice: 'Товар успешно обновлен.' }
         format.json { render :show, status: :ok, location: @tovar }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TovarsController < ApplicationController
   def destroy
     @tovar.destroy
     respond_to do |format|
-      format.html { redirect_to tovars_url, notice: 'Tovar was successfully destroyed.' }
+      format.html { redirect_to tovars_url, notice: 'Товар успешно удален.' }
       format.json { head :no_content }
     end
   end
