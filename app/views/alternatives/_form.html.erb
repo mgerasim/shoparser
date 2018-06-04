@@ -35,6 +35,13 @@
   </div>
 
   <div class="form-group">
+    <div class="col-sm-9">
+      <%= form.label "Значение:", :class => "col-sm-3 control-label"  %>
+    </div>
+    <%= form.text_field :value, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
       <%= form.submit "Сохранить", :class => "btn btn-primary" %>
     </div>
