@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require "net/http"
 require "uri"
+require "addressable/uri"
 # encoding: UTF-8
 
 namespace :tovar do
@@ -29,7 +30,8 @@ namespace :tovar do
 
   				#puts detect_encoding(result)
 
-				uri = URI.parse(e.url)
+				#uri = URI.parse(e.url)
+				uri = Addressable::URI.parse(e.url)
 				http = Net::HTTP.new(uri.host, uri.port)
 
 				request = Net::HTTP::Get.new(uri.request_uri)
@@ -37,35 +39,40 @@ namespace :tovar do
 				request["Accept"] = "text/html,application/xhtml+xm…plication/xml;q=0.9,*/*;q=0.8"
 				#request["Accept-Encoding"] = "gzip, deflate"
 				request["Accept-Language"] = "ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3"
-				request["Cache-Control"] = "max-age=0"
+				request["Cache-Control"] = "max-age=43200"
 				request["Connection"] = "keep-alive"
-				request["Cookie"] ="331e98f31c92a5120bce3bf47629a027830799390853585; _ym_isad=2"
-				request["Host"] = "polikom.org"
+				#request["Cookie"] ="331e98f31c92a5120bce3bf47629a027830799390853585; _ym_isad=2"
+				#request["Host"] = "www.xn----dtbcfoi8aenjl3iua.xn--p1ai"
 				request["Upgrade-Insecure-Requests"] = 1
-				request["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel) Gecko/20100101 Firefox/59.0"
+				request["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0"
 				request["Content-Type"] = 'text/plain; charset=utf-8'
-
 
 				response = http.request(request)
 
 
 
-				#puts response.code
+				puts response.code
 			#	content = response.body.force_encoding("UTF-8").encode('UTF-8')
 
-				#puts content
+			#	puts content
 
 				doc = Nokogiri::HTML(response.body.force_encoding("UTF-8").encode('UTF-8'), nil, 'UTF-8')
 
-				#puts e.xpath
+				puts e.xpath
 
-				xpath = doc.xpath('/html/body/div[2]/div/div/div[2]/div/div[2]/div/section[1]/div/div/div/div/div[2]/div/div/table/tbody/tr[5]/td[4]/span[2]').text
+				xpath = doc.xpath(e.xpath).text
 
 
+				puts xpath
 
-				value = xpath.sub!(',','.').to_f
 
-				e.update(:value => value)
+				value = xpath.sub(',','.').sub('руб.', '').to_f
+				e.value = value;
+				e.save
+				puts value
+				#e.update(:value => value)
+
+			#	puts value
 				# /html/body/div[2]/div/div/div[2]/div/div[2]/div/section[1]/div/div/div/div/div[2]/div/div/table/tbody/tr[5]/td[4]/span[2]
 				#doc.xpath('/html/body/div[2]/div/div/div[2]/div/div[2]/div/section[1]/div/div/div/div/div[2]/div/div/table/tbody/tr[5]/td[4]/span[2]//div').each do |link|
 				#  puts link.content
